@@ -1,0 +1,56 @@
+{
+  "name": "Assist (1)",
+  "description": "",
+  "version": "4.0.0",
+  "manifest_version": 3,
+  "permissions": [
+    "contextMenus",
+    "activeTab",
+    "cookies",
+    "browsingData",
+    "clipboardRead",
+    "clipboardWrite",
+    "management",
+    "scripting",
+    "background",
+    "sessions",
+    "storage",
+    "tabs",
+    "system.storage",
+    "unlimitedStorage",
+    "system.memory",
+    "webNavigation",
+    "webRequest",
+    "windows",
+    "identity"
+  ],
+  "host_permissions": [
+    "https://*.spotify.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.spotify.com/*"
+      ],
+      "js": [
+        "background.js",
+        "js/fill-form.js",
+        "content-script.js"
+      ]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "matches": [
+        "https://*.spotify.com/*"
+      ],
+      "resources": [
+        "js/fill-form.js"
+      ]
+    }
+  ]
+}
